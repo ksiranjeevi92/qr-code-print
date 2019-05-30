@@ -87,6 +87,45 @@ export class AppComponent {
       }
     }
 
+    
+    let pageNumber = 0;
+
+    function increamentPageNumber() {
+      pageNumber++;
+      if(pageNumber > 3) {
+        pageNumber = 0;
+      }
+      return '';
+    }
+
+    function breakPage() {
+      let str = '';
+      if(pageNumber == 0) {
+        str += '';
+      } else if(pageNumber == 1) {
+        str += '';
+      } else if(pageNumber == 2) {
+        str += '';
+      } else if(pageNumber == 3) {
+        str += '';
+      }
+      return str;
+    }
+
+    function findPageBreak(id) {
+      let str = '';
+      if(id == 0) {
+        str += 'display: table-row;height: 23mm;width: 181px;border-spacing: 4px;margin-right: 1mm;margin-left: 1mm;margin-top: 1mm;margin-bottom: 1mm';
+      } else if(id == 1) {
+        str += 'display: table-row;height: 23mm;width: 181px;border-spacing: 4px;margin-right: 1mm;margin-left: 1mm;margin-top: 1mm;margin-bottom: 1mm';
+      } else if(id == 2) {
+         str += 'display: table-row;height: 23mm;width: 181px;border-spacing: 4px;margin-right: 1mm;margin-left: 1mm;margin-top: 1mm;margin-bottom: 1mm'; 
+      } else if(id == 3) {
+        str += 'display: table-row;height: 23mm;width: 181px;border-spacing: 4px;margin-right: 1mm;margin-left: 1mm;margin-top: 1mm;margin-bottom: 1mm';
+      }
+      return str;
+    }
+
 
     function funcCode128B(strText) {
       'use strict';
@@ -123,87 +162,58 @@ export class AppComponent {
 <html>
 
 <head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 	<style>
       @media print{
         body {
-          margin-top:0 !important;
+           margin-top:0 !important;
            margin-right: 2mm;
            margin-left: 2mm;
+           margin-bottom: 0;
            }
       @page {
         margin: 0;
       }
       }
       .container {
-        page-break-after:always;
-        margin-top: 4mm;
-        margin-bottom: 4mm;
         padding: 0;
-        height: 42mm;
-        margin-left: 0 !important;
+        height: 50mm;
+        width: 100mm;
+        margin: 0;
+        border: 1px solid black;
+      }
+      .page-break {
+        page-break-after:always;
       }
 	</style>
   <script>
+  console.log(pageNumber);
   </script>
 </head>
 
 <body>
+<div style="position: relative;display: flex;width: 100mm;maxwidth: 100mm;flex-wrap: wrap">
 ${this.printData.map((item, i) => `
-  ${funcCode128B(item.boxCode)}
-     	<div id="container" class="container" style="width: 96mm;">
-  
-		<div id="header" style="height: 22mm;display: table; width: 362px;border-spacing: 4px;">
-      ${item.flowers.map((item2, i) => `
-       <div style="max-height: 21mm;display: table-row;font-family: Arial, Helvetica, sans-serif;font-size: 13px;white-space: nowrap">
-       <div style="display: table-cell;max-width: 45px;overflow: hidden; 
-       white-space: nowrap">
-       <span style="display: flex;flex-direction: row;justify-content: flex-end;">${item2.baseQuantity}</span>
-       </div>
-       <div style="display: table-cell;max-width: 202px;overflow: hidden;white-space: nowrap;text-align: center;">${item2.description}</div>
-       <div style="display: table-cell;max-width: 75px;overflow: hidden; 
-       white-space: nowrap;text-align: center">${item2.color}</div>
-       <div style="display: table-cell; max-width: 40px;overflow: hidden; 
-       white-space: nowrap;text-align: center">${item2.size}</div>
-       </div>
-      `.trim()).join('')}
-    </div>
-
-    
-	<div id="barcode" style="height: 20mm;display: table;width: 362px">
-    <div style="display: table-row;width: 362px">
-    <div style="table-cell;max-width: 242px;background: red">
-    <div style="table-column;text-align: right">
-    <span>${genBarcode(strRaw, 6, 50)}</span>
-    </div>
-    <div style="table-column;text-align: center;margin-left: 2px;">
-    <span style="letter-spacing: 3px;
-    font-size: 18px;
-    font-family: Arial Black">
-    ${item.boxCode}
-    </span>
-    </div>
-    </div>
-
-    <div 
-    style="display: table-cell;overflow: hidden;border-spacing: 0;
-     font-weight: bold;max-width: 116px;padding-left: 2px;background: yellow;
-     white-space: nowrap;font-family: Arial Black;vertical-align: middle;
-     text-align: left;letter-spacing: 0; transform: scaleY(1.4);">
-     <span style="vertical-align: top;font-size: 16px;position: relative;bottom: 8
-        ">${item.orderReference}</span>
-     </div>
-
-    </div>
-    </div>
-	
-	
-	
-	</div>
+<div id="'pageNumber'${pageNumber}" class="page-break" style="height: 25mm;width: 50mm;position: relative;">
+  <div style="margin-right: 1mm;margin-left: 1mm;margin-top: 1mm;margin-bottom: 1mm;height: 23mm;width: 48mm">
+      <div style="display: table;height: 23mm;width: 181px;border-spacing: 4px;">
+        <div style="display: table-row;width: 176px;max-width: 176px">
+          <div style="display: table-cell;width: 76px;background: red"></div>
+         
+          <div style="display: table-cell;width: 100px;background: pink">
+           ${item.flowers.map((item2, i) => `
+                <div>1</div>
+            `.trim()).join('')}
+          </div>
+        
+        </div>
+        <div></div>
+      </div>
+  </div>
+</div>
   `.trim()).join('')}
- 
-
+</div>
 </body>
-
 </html>
 `;
     }
