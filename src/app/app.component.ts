@@ -82,10 +82,10 @@ ${this.printData.map((item, i) => `
   <div style="margin-right: 1mm;margin-bottom: 1mm; margin-top: 1mm;marging-left: 4mm;height: 22mm;width: 45mm">
 
 
-      <div id="table1" style="display: table;height: 22mm;width: 170px;border-spacing: 4px;background: yellow">
+      <div id="table1" style="display: table;height: 22mm;width: 170px;border-spacing: 4px;">
         <div style="display: table-row;width: 166px;max-width: 166px;height: 22mm;max-height: 22mm">
 
-          <div style="display: table-cell;max-width: 60px;width: 60px;background: red;text-align: center;vertical-align: middle">
+          <div style="display: table-cell;max-width: 60px;width: 60px;;text-align: center;vertical-align: middle">
             <img src="${"https://chart.googleapis.com/chart?cht=qr&chl=" + item.boxCode + "&chs=53x62&chld=L|0"}">
 
 
@@ -96,7 +96,7 @@ ${this.printData.map((item, i) => `
 
           </div>
          
-          <div style="display: table-cell;max-width: 106px;width: 106px;background: pink;">            
+          <div style="display: table-cell;max-width: 106px;width: 106px;">            
            ${item.flowers.map((item2, i) => `
            <div style="display: table-row;font-family: Impact;font-size:10px;width: 106px;max-width: 106px;overflow-y: hidden">
                 <span>${item2.baseQuantity}</span>
@@ -111,7 +111,7 @@ ${this.printData.map((item, i) => `
                <div style="display: table-column">two</div>
              </div>
             </div>
-             <div style=";background: purple;text-align: center;width: 106px;max-width: 106px;overflow: hidden;">
+             <div style="text-align: center;width: 106px;max-width: 106px;overflow: hidden;">
                <span style="font-family: Calibri;font-size: 13px;font-weight: bold">ULGKS@99</span>
             </div>
             
